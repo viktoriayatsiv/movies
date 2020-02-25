@@ -8,9 +8,7 @@ class MoviesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        brightness: Brightness.dark
-      ),
+          primarySwatch: Colors.deepPurple, brightness: Brightness.dark),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -21,7 +19,7 @@ class MoviesApp extends StatelessWidget {
               tooltip: 'Menu',
               onPressed: () {},
             ),
-             IconButton(
+            IconButton(
               icon: const Icon(Icons.more_vert),
               tooltip: 'More',
               onPressed: () {},

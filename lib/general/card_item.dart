@@ -14,7 +14,6 @@ class CardItem extends StatelessWidget {
             splashColor: Colors.teal,
             highlightColor: Colors.transparent,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 100,

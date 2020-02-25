@@ -9,7 +9,7 @@ class GeneralPageView extends StatefulWidget {
 
 class _GeneralPageViewState extends State<GeneralPageView> {
   PageController _controller = PageController(
-    initialPage: 0,
+    initialPage: 1,
   );
 
   @override

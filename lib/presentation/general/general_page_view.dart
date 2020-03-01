@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pages/page_0.dart';
-import '../pages/page_1.dart';
+import 'package:movies/di/injector.dart';
+import '../../pages/page_0.dart';
+import '../../pages/page_1.dart';
 
 class GeneralPageView extends StatefulWidget {
   @override
@@ -13,13 +14,8 @@ class _GeneralPageViewState extends State<GeneralPageView> {
   );
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    var bloc = Injector.of(context).main().getBloc();
     return PageView(
       controller: _controller,
       children: [
@@ -27,5 +23,11 @@ class _GeneralPageViewState extends State<GeneralPageView> {
         PageWidget1(),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import './general/general_page_view.dart';
+import 'package:movies/di/injector.dart';
+import 'general/general_page_view.dart';
 
-void main() => runApp(MoviesApp());
+void main() {
+  var injector = Injector(child : MoviesApp());
+  injector.init();
+  runApp(injector);
+}
 
 class MoviesApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,4 +37,5 @@ class MoviesApp extends StatelessWidget {
       ),
     );
   }
+
 }

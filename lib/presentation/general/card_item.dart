@@ -20,9 +20,7 @@ class CardItem extends StatelessWidget {
                   width: 150,
                   child: Stack(
                     children: [
-                      Positioned.fill(
-                          child:
-                              Ink.image(image: AssetImage('assets/food.jpeg'))),
+                      Positioned.fill(child: Ink.image(image: AssetImage('assets/food.jpeg'))),
                       Positioned(
                         bottom: 0,
                         left: 0,

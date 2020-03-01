@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../general/card_item.dart';
+import '../presentation/general/card_item.dart';
 
 class PageWidget1 extends StatelessWidget {
   @override

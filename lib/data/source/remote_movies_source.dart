@@ -1,33 +1,17 @@
-import 'package:movies/domain/model/movie.dart';
+import 'package:movies/domain/models/movie/movie.dart';
+import 'package:movies/domain/models/movies_page/movies_page.dart';
 import 'dart:async';
-import 'dart:convert';
-import './remote_api_link.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:dio/dio.dart';
 
-import 'package:http/http.dart' as http;
+part 'remote_movies_source.g.dart';
 
-class RemoteMoviesSource {
-  Future<List<Movie>> fetchMovies() async {
-    final response =
-        await http.get(new ApiLink(link: 'trending/all/day').toString());
+@RestApi(baseUrl: "https://api.themoviedb.org/3/")
+abstract class RemoteMoviesSource {
+  factory RemoteMoviesSource(Dio dio, {String baseUrl}) = _RemoteMoviesSource;
 
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response, then parse the JSON.
-      return this.parseResponseJson(response.body);
-      // return new List();
-    } else {
-      // If the server did not return a 200 OK response, then throw an exception.
-      throw Exception('Failed to load movies');
-    }
-  }
-
-  List<Movie> parseResponseJson(String response) {
-    final Map<String, dynamic> responseJson = json.decode(response);
-    if (responseJson != null && responseJson.containsKey('results')) {
-      Iterable list = responseJson['results'];
-      List<Movie> movies = list.map((model) => Movie.fromJson(model)).toList();
-      return movies;
-    } else {
-      return new List();
-    }
-  }
+  @GET('trending/all/day')
+  Future<MoviesPage> fetchMoviesPage(
+    @Query("api_key") String apiKey,
+  );
 }

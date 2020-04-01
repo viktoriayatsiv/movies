@@ -1,13 +1,19 @@
 import 'package:movies/data/source/remote_movies_source.dart';
-import 'package:movies/domain/model/movie.dart';
+import 'package:movies/domain/models/movie/movie.dart';
+import 'package:movies/domain/models/movies_page/movies_page.dart';
 
 class MoviesRepository {
-
   final RemoteMoviesSource _remoteMoviesSource;
+  final String remoteMoviesSourceApiKey = '217a2cedaff0acb1d6b84e1d02d07ff8';
 
   MoviesRepository(this._remoteMoviesSource);
 
+  Future<MoviesPage> fetchMoviesPage() async {
+    return _remoteMoviesSource.fetchMoviesPage(remoteMoviesSourceApiKey);
+  }
+
   Future<List<Movie>> getMovies() async {
-    return _remoteMoviesSource.fetchMovies();
+    final MoviesPage moviesPage = await this.fetchMoviesPage();
+    return moviesPage.results;
   }
 }

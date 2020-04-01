@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'movie.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Movie {
   final int id;
   final String title;
@@ -27,21 +32,6 @@ class Movie {
       this.voteCount,
       this.voteAverage,
       this.video});
-
-  factory Movie.fromJson(Map<String, dynamic> json) {
-    return Movie(
-        id: json['id'],
-        title: json['title'],
-        adult: json['adult'],
-        overview: json['overview'],
-        // genreIds: json['genre_ids'],
-        originalTitle: json['original_title'],
-        originalLanguage: json['original_language'],
-        backdropPath: json['backdrop_path'],
-        posterPath: json['poster_path'],
-        popularity: json['popularity'],
-        voteCount: json['vote_count'],
-        voteAverage: json['vote_average'],
-        video: json['video']);
-  }
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 }

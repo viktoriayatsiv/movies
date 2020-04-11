@@ -1,6 +1,6 @@
 
 import 'dart:async';
-import 'package:movies/domain/model/movie.dart';
+import 'package:movies/domain/models/movie/movie.dart';
 import 'package:movies/domain/repository/movies_repository.dart';
 import 'package:movies/presentation/bloc.dart';
 

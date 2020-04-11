@@ -2,6 +2,7 @@
 import 'package:movies/data/source/remote_movies_source.dart';
 import 'package:movies/domain/repository/movies_repository.dart';
 import 'package:movies/presentation/general/general_bloc.dart';
+import 'package:dio/dio.dart';
 
 class GeneralPageInjector {
 
@@ -11,7 +12,7 @@ class GeneralPageInjector {
   GeneralPageBloc _generalPageBloc;
 
   void init() {
-    _remoteMoviesSource = RemoteMoviesSource();
+    _remoteMoviesSource = RemoteMoviesSource(Dio());
     _moviesRepository = MoviesRepository(_remoteMoviesSource);
   }
 

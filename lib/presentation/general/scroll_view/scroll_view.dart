@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import '../presentation/general/card_item.dart';
 
-class PageWidget0 extends StatelessWidget {
+class ScrolViewWidget extends StatelessWidget {
+  final List<Widget> items;
+  ScrolViewWidget(this.items);
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -13,14 +15,7 @@ class PageWidget0 extends StatelessWidget {
             crossAxisSpacing: 5,
             mainAxisSpacing: 5,
             crossAxisCount: 2,
-            children: <Widget>[
-              CardItem(Colors.teal, text: 'Changed teal'),
-              Container(
-                padding: const EdgeInsets.all(8),
-                child: const Text('Heed not the rabble'),
-                color: Colors.green[200],
-              ),
-            ],
+            children: items,
           ),
         ),
       ],

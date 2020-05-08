@@ -20,34 +20,18 @@ class CardItem extends StatelessWidget {
                   width: 150,
                   child: Stack(
                     children: [
-                      Positioned.fill(child: Ink.image(image: AssetImage('assets/food.jpeg'))),
-                      Positioned(
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        top: 0,
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          alignment: Alignment.bottomCenter,
-                          child: Text(
-                            'Image text ',
-                            style: TextStyle(
-                              color: Colors.yellow,
-                              backgroundColor: Colors.teal,
-                            ),
-                          ),
-                        ),
-                      ),
+                      Positioned.fill(
+                          child:
+                              Ink.image(image: AssetImage('assets/food.jpeg'))),
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        (text == null) ? 'Test text' : text,
+                        text,
                         style: TextStyle(
                           color: color,
                         ),

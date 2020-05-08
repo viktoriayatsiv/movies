@@ -1,4 +1,3 @@
-import 'package:movies/domain/models/movie/movie.dart';
 import 'package:movies/domain/models/movies_page/movies_page.dart';
 import 'dart:async';
 import 'package:retrofit/retrofit.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/di/injector.dart';
+import 'package:movies/domain/models/movie/movie.dart';
 import '../../screens/popular_movies.dart';
 import '../../screens/top_rated_movies.dart';
 import '../general/card/card_item.dart';
@@ -14,25 +15,44 @@ class _GeneralPageViewState extends State<GeneralPageView> {
     initialPage: 0,
   );
 
-  final List<Widget> testData1 = [
-    CardItem(Colors.teal, text: 'Changed teal'),
-    Container(
-      padding: const EdgeInsets.all(8),
-      child: const Text('Heed not the rabble'),
-      color: Colors.green[200],
-    ),
-  ];
+  List<CardItem> dataToWidget(List<Movie> movies) {
+    return movies
+        .where((movie) => movie.title != null)
+        .map<CardItem>((movie) => new CardItem(Colors.teal, text: movie.title))
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     var bloc = Injector.of(context).main().getBloc();
-    return PageView(
-      controller: _controller,
-      children: [
-        PopularMoviesWidget(testData1),
-        TopRatedMoviesWidget([testData1[1], testData1[1], testData1[1]]),
-      ],
-    );
+    return StreamBuilder(
+        stream: bloc.moviesStream(),
+        initialData: 0,
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return new Text('Loading...');
+            default:
+              // return PageView.builder(
+              //     // Changes begin here
+              //     controller: _controller,
+              //     scrollDirection: Axis.horizontal,
+              //     itemCount: snapshot.data.length,
+              //     itemBuilder: (context, position) {
+              //       final moviesWidget = dataToWidget(snapshot.data);
+              //       return PopularMoviesWidget(moviesWidget);
+              //     });
+              final moviesWidget = dataToWidget(snapshot.data);
+              return PageView(
+                controller: _controller,
+                children: [
+                  PopularMoviesWidget(moviesWidget),
+                  // TopRatedMoviesWidget([]),
+                ],
+              );
+          }
+        });
   }
 
   @override

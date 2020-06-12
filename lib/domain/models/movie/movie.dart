@@ -11,8 +11,8 @@ class Movie {
   final List<int> genreIds;
   final String originalTitle;
   final String originalLanguage;
-  final String backdropPath;
-  final String posterPath;
+  String backdropPath;
+  String posterPath;
   final num popularity;
   final int voteCount;
   final num voteAverage;

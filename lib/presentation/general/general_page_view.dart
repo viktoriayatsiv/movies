@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:movies/di/injector.dart';
 import 'package:movies/domain/models/movie/movie.dart';
+import 'package:movies/presentation/general/loader/loader.dart';
+import 'package:movies/presentation/general/movie_card/movie_card.dart';
 import '../../screens/popular_movies.dart';
 import '../../screens/top_rated_movies.dart';
-import '../general/card/card_item.dart';
 
 class GeneralPageView extends StatefulWidget {
   @override
@@ -15,10 +16,10 @@ class _GeneralPageViewState extends State<GeneralPageView> {
     initialPage: 0,
   );
 
-  List<CardItem> dataToWidget(List<Movie> movies) {
+  List<MovieCard> dataToWidget(List<Movie> movies) {
     return movies
         .where((movie) => movie.title != null)
-        .map<CardItem>((movie) => new CardItem(Colors.teal, text: movie.title))
+        .map<MovieCard>((movie) => new MovieCard(movie))
         .toList();
   }
 
@@ -31,24 +32,18 @@ class _GeneralPageViewState extends State<GeneralPageView> {
         builder: (BuildContext context, snapshot) {
           if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
           switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return new Text('None');
             case ConnectionState.waiting:
-              return new Text('Loading...');
+              return new Loader();
             default:
-              // return PageView.builder(
-              //     // Changes begin here
-              //     controller: _controller,
-              //     scrollDirection: Axis.horizontal,
-              //     itemCount: snapshot.data.length,
-              //     itemBuilder: (context, position) {
-              //       final moviesWidget = dataToWidget(snapshot.data);
-              //       return PopularMoviesWidget(moviesWidget);
-              //     });
               final moviesWidget = dataToWidget(snapshot.data);
               return PageView(
                 controller: _controller,
+                scrollDirection: Axis.horizontal,
                 children: [
                   PopularMoviesWidget(moviesWidget),
-                  // TopRatedMoviesWidget([]),
+                  TopRatedMoviesWidget([]),
                 ],
               );
           }

@@ -17,7 +17,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           onPressed: () {},
         ),
       ],
-      title: const Text('AppBar'),
+      title: const Text('Movies'),
     );
   }
 

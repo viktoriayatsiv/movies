@@ -14,7 +14,9 @@ class MoviesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple, brightness: Brightness.dark),
+          primarySwatch: Colors.deepPurple,
+          brightness: Brightness.dark,
+          accentColor: Colors.yellow),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBarWidget(),

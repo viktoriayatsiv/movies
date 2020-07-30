@@ -9,6 +9,7 @@ class Movie {
   final bool adult;
   final String overview;
   final List<int> genreIds;
+  List<String> genreList;
   final String originalTitle;
   final String originalLanguage;
   String backdropPath;
@@ -24,6 +25,7 @@ class Movie {
       this.adult,
       this.overview,
       this.genreIds,
+      this.genreList,
       this.originalTitle,
       this.originalLanguage,
       this.backdropPath,

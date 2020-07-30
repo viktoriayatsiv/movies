@@ -1,4 +1,6 @@
 import 'package:movies/domain/models/configuration/configuration.dart';
+import 'package:movies/domain/models/genre/genre.dart';
+import 'package:movies/domain/models/genres/genres.dart';
 import 'package:movies/domain/models/movies_page/movies_page.dart';
 import 'dart:async';
 import 'package:retrofit/retrofit.dart';
@@ -10,13 +12,18 @@ part 'remote_movies_source.g.dart';
 abstract class RemoteMoviesSource {
   factory RemoteMoviesSource(Dio dio, {String baseUrl}) = _RemoteMoviesSource;
 
-  @GET('/trending/all/day')
+  @GET('/movie/popular')
   Future<MoviesPage> fetchMoviesPage(
     @Query("api_key") String apiKey,
   );
 
   @GET('/configuration')
   Future<Configuration> getConfiguration(
+    @Query("api_key") String apiKey,
+  );
+
+  @GET('/genre/movie/list')
+  Future<Genres> getGenres(
     @Query("api_key") String apiKey,
   );
 }

@@ -14,8 +14,25 @@ class MovieCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Column(
           children: [
+            // Positioned(
+            //   top: 0,
+            //   child: Container(
+            //     padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+            //     decoration: BoxDecoration(
+            //         color: Colors.lime,
+            //         borderRadius: BorderRadius.only(
+            //           topLeft: Radius.circular(8),
+            //           bottomRight: Radius.circular(8),
+            //         ) // green shaped
+            //         ),
+            //     child: Text(
+            //       movie.genreList.join(','),
+            //       style: TextStyle(color: Colors.deepPurpleAccent),
+            //     ),
+            //   ),
+            // ),
             Flexible(
-              // fit: FlexFit.tight,
+              fit: FlexFit.tight,
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 placeholder: (context, url) => Loader(),
@@ -31,19 +48,6 @@ class MovieCard extends StatelessWidget {
                   color: Colors.grey,
                 ),
               ),
-            ),
-            ButtonBar(
-              alignment: MainAxisAlignment.center,
-              buttonPadding: EdgeInsets.all(0),
-              children: [
-                RaisedButton(
-                  child: Text('button'),
-                  textColor: Colors.amber,
-                  onPressed: () {
-                    print('pressed');
-                  },
-                ),
-              ],
             ),
           ],
         ),

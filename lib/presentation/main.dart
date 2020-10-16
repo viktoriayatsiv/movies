@@ -16,7 +16,21 @@ class MoviesApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
           brightness: Brightness.dark,
-          accentColor: Colors.yellow),
+          accentColor: Colors.yellow,
+          textTheme: TextTheme(
+            headline1: TextStyle(
+                fontSize: 48.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.yellow),
+            headline3: TextStyle(
+                fontSize: 36.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.yellow),
+            headline6: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w400,
+                color: Colors.yellow.shade100),
+          )),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBarWidget(),

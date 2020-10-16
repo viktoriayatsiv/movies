@@ -11,9 +11,20 @@ class GeneralPageView extends StatefulWidget {
 }
 
 class _GeneralPageViewState extends State<GeneralPageView> {
-  PageController _controller = PageController(
-    initialPage: 0,
-  );
+  int initialPage = 1;
+  PageController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController(
+      viewportFraction: 0.9,
+      initialPage: initialPage,
+    );
+  }
+
+  // PageController _controller =
+  //     PageController(initialPage: initialPageV, viewportFraction: 0.9);
 
   List<MovieCard> convertToMovieCardWidget(List<Movie> movies) {
     return movies
@@ -56,6 +67,11 @@ class _GeneralPageViewState extends State<GeneralPageView> {
               return new Loader();
             default:
               return PageView(
+                onPageChanged: (value) {
+                  setState(() {
+                    initialPage = value;
+                  });
+                },
                 controller: _controller,
                 scrollDirection: Axis.horizontal,
                 children: splitMoviesByGenre(snapshot.data),

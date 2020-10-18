@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/di/injector.dart';
 import 'general/general_page_view.dart';
-import 'general/app_bar/app_bar.dart';
 
 void main() {
   var injector = Injector(child: MoviesApp());
@@ -15,6 +14,7 @@ class MoviesApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
+          primaryColor: Colors.deepPurple,
           brightness: Brightness.dark,
           accentColor: Colors.yellow,
           textTheme: TextTheme(
@@ -32,10 +32,7 @@ class MoviesApp extends StatelessWidget {
                 color: Colors.yellow.shade100),
           )),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBarWidget(),
-        body: GeneralPageView(),
-      ),
+      home: GeneralPageView(),
     );
   }
 }

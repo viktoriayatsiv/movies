@@ -5,13 +5,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.deepPurple,
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.menu),
-          tooltip: 'Menu',
-          onPressed: () {},
-        ),
-      ],
       title: const Text('Movies'),
     );
   }

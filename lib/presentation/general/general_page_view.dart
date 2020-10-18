@@ -12,7 +12,7 @@ class GeneralPageView extends StatefulWidget {
 }
 
 class _GeneralPageViewState extends State<GeneralPageView> {
-  int initialPage = 0;
+  int initialPage = 999;
   PageController _controller;
 
   @override
@@ -44,11 +44,8 @@ class _GeneralPageViewState extends State<GeneralPageView> {
                     getAllAvailableGanres(snapshot.data).toList(), _controller),
                 body: Column(
                   children: [
-                    PageViewIndicatorWidget(
-                        getAllAvailableGanres(snapshot.data).length,
-                        _controller),
                     Expanded(
-                      child: PageView(
+                      child: PageView.builder(
                         onPageChanged: (value) {
                           setState(() {
                             initialPage = value;
@@ -56,7 +53,10 @@ class _GeneralPageViewState extends State<GeneralPageView> {
                         },
                         controller: _controller,
                         scrollDirection: Axis.horizontal,
-                        children: splitMoviesByGenre(snapshot.data),
+                        itemBuilder: (context, int index) {
+                          return splitMoviesByGenre(snapshot.data)[
+                              index % splitMoviesByGenre(snapshot.data).length];
+                        },
                       ),
                     )
                   ],

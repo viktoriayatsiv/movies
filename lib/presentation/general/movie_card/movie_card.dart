@@ -39,12 +39,13 @@ class MovieCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              padding: const EdgeInsets.symmetric(
+                  vertical: moviesDefaultPadding / 2),
               child: Text(
                 this.movie.title,
                 textAlign: TextAlign.center,
-                style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    color: Colors.yellow.shade100, fontWeight: FontWeight.w600),
               ),
             ),
           ],

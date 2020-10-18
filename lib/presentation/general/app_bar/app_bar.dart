@@ -11,11 +11,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           tooltip: 'Menu',
           onPressed: () {},
         ),
-        IconButton(
-          icon: const Icon(Icons.more_vert),
-          tooltip: 'More',
-          onPressed: () {},
-        ),
       ],
       title: const Text('Movies'),
     );

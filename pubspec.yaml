@@ -26,6 +26,7 @@ dependencies:
   json_annotation: any
   logger: any
   cached_network_image: any
+  smooth_page_indicator: ^0.2.0
 
 dev_dependencies:
   flutter_test:
